@@ -1,0 +1,81 @@
+Sorting singly linked list using insertion sort algorithm
+----------------------------------------------------------------
+
+Certainly! Let's go through the step-by-step approach with the help of diagrams:
+
+Suppose we have a singly linked list with the following elements: 5 -> 3 -> 8 -> 2 -> 1 -> null.
+
+Step 1:
+Check if the length of the linked list is less than 2. In this case, it is not, so we proceed to the next step.
+
+Step 2:
+Create two pointers: sortedListHead and unsortedListHead. Initially, set sortedListHead to point to the head node (5) and unsortedListHead to point to the second node (3).
+
+rust
+Copy code
+    sortedListHead
+        |
+        v
+      5 -> 3 -> 8 -> 2 -> 1 -> null
+        ^
+        |
+ unsortedListHead
+Step 3:
+Initialize the sorted part of the list. Set sortedListHead.next to null, indicating that the sorted part initially contains only the head node.
+
+rust
+Copy code
+    sortedListHead
+        |
+        v
+      5 -> null
+        ^
+        |
+ unsortedListHead
+      |
+      v
+     3 -> 8 -> 2 -> 1 -> null
+Step 4:
+Iterate through the unsorted part of the list until unsortedListHead becomes null. Let's go through each iteration:
+----------------------------------------------
+Iteration 1:
+
+Current node: 3
+Compare 3 with the head node of the sorted part (5). Since 3 is smaller, it becomes the new head of the sorted list.
+Adjust the pointers:
+sortedListHead now points to 3.
+unsortedListHead moves to the next node (8).
+Update the list:
+Sorted part: 3 -> 5 -> null
+Unsorted part: 8 -> 2 -> 1 -> null
+----------------------------------------------
+Iteration 2:
+
+Current node: 8
+Compare 8 with the head node of the sorted part (3). Since 8 is greater, we need to find the correct position to insert it.
+Iterate through the sorted part (3 -> 5) until we find the correct position (5 is greater than 8).
+Adjust the pointers to insert 8 at the correct position:
+Update the next reference of the previous node (3) to point to 8.
+Update the next reference of 8 to point to 5.
+Update the list:
+Sorted part: 3 -> 5 -> 8 -> null
+Unsorted part: 2 -> 1 -> null
+-------------------------------------------
+Iteration 3:
+
+Current node: 2
+Compare 2 with the head node of the sorted part (3). Since 2 is smaller, it becomes the new head of the sorted list.
+Adjust the pointers:
+sortedListHead now points to 2.
+unsortedListHead moves to the next node (1).
+Update the list:
+Sorted part: 2 -> 3 -> 5 -> 8 -> null
+Unsorted part: 1 -> null
+---------------------------------------
+Iteration 4:
+
+Current node: 1
+Compare 1 with the head node of the sorted part (2). Since 1 is smaller, it becomes the new head of the sorted list.
+Adjust the pointers:
+sortedListHead now points to 1.
+unsortedListHead becomes null as there are no more nodes in the unsorted part.
